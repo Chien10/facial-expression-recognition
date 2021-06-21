@@ -46,7 +46,15 @@ Every time you work in this directory, remember to start your session with the p
 10. (Optional) To completely stop the app: `heroku ps:scale web=0`. Make sure to turn off other process types defined in `Procfile`. If you just want to turn the app off for error fixing, remember to turn it on later with: `heroku ps:scale web=0`.
 
 # 4. Docker
-
+- You can skip the setting-up part with `conda` by using `Docker` which is another way ensures that the Python version is correct, install dependencies, check out the whole repo, cuda version, etc. Virtual environment is not enough when it comes to gpu version and even though this tutorial does not require cuda, it's convenient to use `Docker`.
+- Install docker with this [instruction](https://docs.docker.com/get-docker/) from the Docker's website.
+- Stay in the current directory, run: `docker build -t fer:1.0 -f api_server/Dockerfile .`.
+- Inspect all the images and their attributes with: `docker images`.
+- You can run the server with: `docker run -p 5000:5000 --name fer fer:1.0`.
+- You can inspect all running and stopped containers: `docker ps` and `docker ps -a`.
+- Your app is running on port 5000, make sure the service is active with: `sudo lsof -i -P -n | grep LISTEN`.
+- When you've done with the app, stop the running container: `docker stop <CONTAINER_ID>`. If you want to remove it: `docker rm <CONTAINER_ID>`.
+- You can remove a Docker image with: `docker image rm <IMAGE_NAME>`.
 
 # 5. AWS deployment
 ## 5.1. Server
