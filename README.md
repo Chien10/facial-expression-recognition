@@ -23,7 +23,8 @@ If you edit the [environment.yml](https://github.com/Chien10/facial-expression-r
 conda activate fer
 ```
 Every time you work in this directory, remember to start your session with the previous command.  
-- Eventually, add `export PYTHONPATH=.:$PYTHONPATH` to your `~/.bashrc` so that you can import packages defined.
+- Rememeber to add `export PYTHONPATH=.:$PYTHONPATH` to your `~/.bashrc` so that you can import packages defined.
+- Lastly, download the facial expression recognition model from `https://assignonec1practicalds.s3.amazonaws.com/ovo_hog_4x4_svm.joblib?AWSAccessKeyId=AKIA2IEV3ZLFUFUYNKNY&Signature=x%2FTs4OVJSRVgatDCrDDUG2k3Kbo%3D&Expires=1655895088` (This link expires after one year, contact me if it's expired) and put the model within `fer/fer_models`.
 
 # 2. Local deployment
 - It's easy to run the application on your local machine.
