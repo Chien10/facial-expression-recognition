@@ -24,7 +24,13 @@ conda activate fer
 ```
 Every time you work in this directory, remember to start your session with the previous command.  
 - Rememeber to add `export PYTHONPATH=.:$PYTHONPATH` to your `~/.bashrc` so that you can import packages defined.
-- Lastly, download the facial expression recognition model from `https://assignonec1practicalds.s3.amazonaws.com/ovo_hog_4x4_svm.joblib?AWSAccessKeyId=AKIA2IEV3ZLFUFUYNKNY&Signature=x%2FTs4OVJSRVgatDCrDDUG2k3Kbo%3D&Expires=1655895088` (This link expires after one year, contact me if it's expired) and put the model within `fer/fer_models`.
+- Lastly, download the facial expression recognition model and put the model within `fer/fer_models`:
+```
+cd fer/fer_models
+wget https://assignonec1practicalds.s3.ap-southeast-1.amazonaws.com/ovo_hog_4x4_svm.joblib
+cd ..
+cd ..
+```
 
 # 2. Local deployment
 - It's easy to run the application on your local machine.
