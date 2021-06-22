@@ -37,7 +37,7 @@ cd ..
 - It's easy to run the application on your local machine.
 - After finishing the [Setting up section](#1.-Sectting-up), set `FLASK_APP=app.py` with `set FLASK_APP=app.py` on your shell.
 - Then, set `FLASK_ENV=development` with the same command.
-- Now you can launch your app with `flask run` and enjoy the app at `http://127.0.0.1:5000/` or `http://localhost:5000/`.
+- Move to `api_server` and you can launch your app with `flask run` and enjoy the app at `http://127.0.0.1:5000/` or `http://localhost:5000/`.
 
 # 3. Heroku deployment
 - Now we'll move to a next level: deploying your app to a service from your local machine.
