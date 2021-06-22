@@ -1,0 +1,119 @@
+Currently, the model just supports 48x48 black white images
+
+To run Flask app locally on Windows:
+	1. Open cmd and move to the folder containing the app
+	2. Suppose that the app file named app.py, type `set FLASK_APP=app.py`
+	3. Use `set FLASK_ENV=development`
+	4. Then type `flask run` and connect to http://127.0.0.1:5000/ or http://localhost:5000/
+
+Directory:
+	D:/
+	|
+	fer app
+	|
+	models
+	|	|
+	|	ovo_hog_4x4_svm.joblib
+	|	vgg.h5
+	|
+	test images
+	|	|
+	|	one.jpg
+	|	...
+	|
+	|
+	static
+	|	|
+	|	style.css
+	|	|
+	|	scikitlearn.png
+	|	|
+	|	upload_faces
+	|	|
+	|	upload_images
+	|
+	|
+	templates
+	|	|
+	|	index.html
+	|	|
+	|	result.html	
+	|
+	app.py
+	|
+	README
+	|
+	classes.json
+	|
+	Procfile
+	|
+	runtime.txt
+	|
+	requirements.txt
+
+To deploy to Heroku:
+	1. Go to your project tracked by Git in Git Command
+	2. Install Heroku CLI for deployment
+	3. Login to heroku via this command `heroku login`
+	4. Create your app by typing: `heroku create` to create
+	a new empty application on Heroku. Make sure the command
+	is executed within your project repository
+	5. You can use `git remote -v` after the fourth step to
+	confirm a remote named `heroku` has been set for your app
+	6. To deploy the application, push the code from your local
+	repository's master branch to your created heroku branch remote:
+	`git push heroku master`
+	7. Check that the dynos are running with `heroku ps`
+	(If you have a problem finding the URL, look at the line saying something like this:
+		https://vast-harbor-73788.herokuapp.com/ deployed to Heroku)
+	8. Enjoy your new website!
+(For more information, refer to https://devcenter.heroku.com/articles/getting-started-with-python?singlepage=true
+and https://devcenter.heroku.com/articles/git)
+	9. To prevent traffics to the app: heroku maintenance:on
+	10. To completely stop the app: heroku ps:scale web=0. Make sure to turn off other process types defined in Procfile
+	If you just turn the app off for error fixing, remember to turn it on: eroku ps:scale web=0.
+
+Note:
+	1. Make sure that `Procfile` exists
+	2. Double check your required packages typing in `requirements.txt`
+
+`runtime.txt` specifies a different Python runtime to use and helps
+you notice if your the Python version of your built app is no longer up to date.
+By default, your app continues to use the version of Python that it was first deployed
+
+dyno: a collection of ligthtweight Linux containers where Heroku apps run on.
+Web dynos are dynos of the web process type declared in Procfile. Only web dynos
+receive HTTP traffic from the routers.
+
+Procfile format: <process type>: <command> where `process type` is an alphanumeric name for your command
+(web, worker, etc.) and `command` indicates the command that every dyno of the process type should execute on
+startup. For exp, `web: gunicorn app:app` within a Procfile tells us about the process type (web) and the command
+to run on startup (gunicorn [OPTIONS] [WSGIA_APP] = gunicorn [OPTIONS] [MODULE_NAME]:[VARIABLE_NAME or WSGI_APP])
+
+Slug is compressed and pre-packaged copy of your application optimized for distribution to the dyno manager. When
+you `git push` to Heroku, your code is received by the slug compiler which transforms your repo into a slug.
+
+Dockerize the app
+1. Download Docker
+2. Make Dockerfile
+3. Build the image defined in Dockerfile: docker build -t fer:1.0 -f api_server/Dockerfile .
+Here, -t is to indicate the repository name (before the colon)
+and the tag of it, while -f points to the location of the Dockerfile
+4. Inspect all images and their attributes with: docker images
+5. Run the containers: docker run -p 5000:5000 --name fer fer:1.0
+6. To inspect all running and stopped containers: docker ps and docker ps -a
+7. When you've done with the app, stop the running container: docker stop <CONTAINER_ID>. If you want to remove it: docker rm <CONTAINER_ID>
+8. To remove an image: docker image rm <IMAGE_NAME> or docker image rm -f <IMAGE_NAME>.
+9. To remove all stopped containers, dangling images, and unused networks: docker system prune
+More about Docker: https://pythonspeed.com/articles/dockerizing-python-is-hard/ and its official websites
+
+- To check for services running: sudo lsof -i -P -n | grep LISTEN
+
+Severless serving
+- Build the container as mentioned in the 'Dockerize the app' section:
+	docker build -t fer_serverless:1.0 -f api_serverless/Dockerfile .
+- Run the container: docker run -p9000:8080 -it --rm fer_serverless:1.0
+
+Environment variables in Linux:
+- List all of them: printenv
+- To find specific environment variable: printenv | grep <something>
