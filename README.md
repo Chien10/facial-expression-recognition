@@ -26,6 +26,7 @@ Every time you work in this directory, remember to start your session with the p
 - Rememeber to add `export PYTHONPATH=.:$PYTHONPATH` to your `~/.bashrc` so that you can import packages defined.
 - Lastly, download the facial expression recognition model and put the model within `fer/fer_models`:
 ```
+mkdir fer/fer_models
 cd fer/fer_models
 wget https://assignonec1practicalds.s3.ap-southeast-1.amazonaws.com/ovo_hog_4x4_svm.joblib
 cd ..
