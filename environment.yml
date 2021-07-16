@@ -13,3 +13,4 @@ dependencies:
   - Pillow=6.2.1
   - pip:
     - opencv-python-headless==4.2.0.34
+    - smart-open==5.1.0
