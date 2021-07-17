@@ -4,7 +4,7 @@ To run Flask app locally on Windows:
 	1. Open cmd and move to the folder containing the app
 	2. Suppose that the app file named app.py, type `set FLASK_APP=app.py`
 	3. Use `set FLASK_ENV=development`
-	4. Then type `flask run` and connect to http://127.0.0.1:5000/ or http://localhost:5000/
+	4. Then type `flask run --host=0.0.0.0 --port=5000` and connect to http://127.0.0.1:5000/ or http://localhost:5000/
 
 Directory:
 	D:/
@@ -117,3 +117,13 @@ Severless serving
 Environment variables in Linux:
 - List all of them: printenv
 - To find specific environment variable: printenv | grep <something>
+
+WSGI
+- Stands for Web Server Gateway Interface.
+- WSGI is a specification that describes how a web server communicates with web applications and how these applications can be chained together to process one request.
+- It's a Python standard interface.
+- WSGI is the standard that widely accepted and is implemented by many modules and containers.
+
+WSGI Server: a software that implements the web server side of the WSGI interface for running Python web applications.
+
+DigitalOcean's App Platform
