@@ -67,9 +67,15 @@ cd ..
 - You can remove a Docker image with: `docker image rm <IMAGE_NAME>`.
 - You can now deploy the container to multiple platforms.
 
-## 4.2. Serverless
-
 # 5. AWS deployment
 ## 5.1. Server
+- It's straightforward to deploy the application to [AWS EC2](https://aws.amazon.com/ec2/?ec2-whats-new.sort-by=item.additionalFields.postDateTime&ec2-whats-new.sort-order=desc).
+- Log into your AWS account and initiate an EC2 instance (Ubuntu Server 20.04 LTS (HVM) with `t2.micro` is enough).
+- Add `Security Group` whose inbound has the following configuration:
+1. Port range: `5000`
+2. Protocol: `TCP`
+3. Source: `0.0.0.0/0`
+- Connect to your instance via `ssh`, then clone the repo and install requirements as you did in your local machine.
+- Lanch the application with `lask run --host=0.0.0.0 --port=5000`.
 
 ## 5.2. Serverless
